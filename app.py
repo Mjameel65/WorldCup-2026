@@ -1,28 +1,5 @@
 import streamlit as st
-import os
-import shutil
 
-DB_PATH = "wc2026.db"  # change to your actual db filename
-
-st.title("🔧 Admin - Database Manager")
-
-password = st.text_input("Admin password", type="password")
-if password != "admin123":  # change this
-    st.stop()
-
-# --- DOWNLOAD ---
-st.subheader("⬇️ Download current DB")
-with open(DB_PATH, "rb") as f:
-    st.download_button("Download database.db", f, "database.db", "application/octet-stream")
-
-# --- UPLOAD ---
-st.subheader("⬆️ Upload updated DB")
-uploaded = st.file_uploader("Upload your edited .db file", type=["db"])
-if uploaded:
-    with open(DB_PATH, "wb") as f:
-        f.write(uploaded.read())
-    st.success("✅ Database replaced successfully! Changes are live.")
-    st.rerun()
 st.set_page_config(
     page_title="World Cup 2026",
     page_icon="⚽",
