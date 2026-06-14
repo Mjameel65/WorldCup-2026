@@ -6,7 +6,13 @@
       "PowerShell(Stop-Process -Force)",
       "Bash(python -c \"from db import init_schema, seed_data, login_user, register_user, create_session, get_session_user, delete_session; print\\('All imports OK'\\)\")",
       "PowerShell(Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"cd d:\\\\world-cup-2026; streamlit run app.py --server.port 8501\")",
-      "PowerShell(Set-Location \"d:\\\\world-cup-2026\"; Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"streamlit run app.py\")"
+      "PowerShell(Set-Location \"d:\\\\world-cup-2026\"; Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"streamlit run app.py\")",
+      "Bash(git -C \"d:/world-cup-2026\" remote -v)",
+      "Bash(git -C \"d:/world-cup-2026\" status)",
+      "Bash(git -C \"d:/world-cup-2026\" log --oneline -5)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(start cmd *)"
     ]
   }
 }
