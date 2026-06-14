@@ -3,7 +3,7 @@ from db import (get_matches, set_match_result, clear_match_result,
                 get_all_predictions_for_match, get_all_users, set_user_role,
                 set_user_verified, get_pending_users, calc_points, get_leaderboard)
 from tz import format_kickoff
-
+#123
 
 def render(user: dict):
     if user.get("role") != "admin":
