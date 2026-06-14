@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import pages.scores; print\\('scores page OK'\\)\")",
+      "Bash(pip install *)",
+      "Bash(python -c \"import extra_streamlit_components; print\\('OK', extra_streamlit_components.__version__\\)\")",
+      "Bash(python -c \"import extra_streamlit_components as stx; print\\('imported OK'\\); print\\(dir\\(stx\\)\\)\")",
+      "Bash(python -c \"import db\")",
+      "Bash(python -c \"from db import create_session, get_session_user, delete_session; print\\('OK'\\)\")"
+    ]
+  }
+}
