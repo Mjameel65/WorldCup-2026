@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="World Cup 2026",
+    page_title="World Cup 202677",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="collapsed",
