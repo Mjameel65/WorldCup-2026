@@ -1,5 +1,18 @@
 import streamlit as st
 
+# TEMPORARY: Download the production database file
+try:
+    with open("wc2026.db", "rb") as f:
+        st.download_button(
+            label="📥 DOWNLOAD LIVE DATABASE NOW",
+            data=f,
+            file_name="wc2026_live.db",
+            mime="application/octet-stream"
+        )
+except FileNotFoundError:
+    st.error("Database file not found in this path.")
+
+
 st.set_page_config(
     page_title="World Cup 2026",
     page_icon="⚽",
