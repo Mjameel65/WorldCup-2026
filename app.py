@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import shutil
 
-DB_PATH = "database.db"  # change to your actual db filename
+DB_PATH = "wc2026.db"  # change to your actual db filename
 
 st.title("🔧 Admin - Database Manager")
 
