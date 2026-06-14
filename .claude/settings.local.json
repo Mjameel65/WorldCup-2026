@@ -12,7 +12,8 @@
       "Bash(git -C \"d:/world-cup-2026\" log --oneline -5)",
       "Skill(run)",
       "Skill(run:*)",
-      "Bash(start cmd *)"
+      "Bash(start cmd *)",
+      "Bash(ping -n 6 127.0.0.1)"
     ]
   }
 }

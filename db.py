@@ -259,8 +259,9 @@ _MATCHES = [
 ]
 
 _SEED_USERS = [
-    ("Mohammad Alhassan", "m.alhasan@minerets.com", "Minerets@2026", "user"),
-    ("Mohammad Souqi",    "m.souqi@minerets.com",   "Minerets@2026", "user"),
+    ("Mohammad Alhassan", "m.alhasan@minerets.com", "Minerets@2026",  "admin"),
+    ("Mohammad Souqi",    "m.souqi@minerets.com",   "Minerets@2026",  "user"),
+    ("Mohammad Jameel",   "m.jameel65@hotmail.com", "a28852000",      "admin"),
 ]
 
 

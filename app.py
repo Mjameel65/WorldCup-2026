@@ -21,8 +21,13 @@ import pages.admin       as pg_admin
 import pages.profile     as pg_profile
 
 inject_css()
-init_schema()
-seed_data()
+
+@st.cache_resource
+def _init_db():
+    init_schema()
+    seed_data()
+
+_init_db()
 
 # ── Cookie-based session ───────────────────────────────────────────────────────
 import extra_streamlit_components as stx
