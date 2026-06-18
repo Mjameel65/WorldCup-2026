@@ -18,7 +18,8 @@
       "Bash(git push *)",
       "PowerShell(Stop-Process -Name \"python\" -ErrorAction SilentlyContinue)",
       "PowerShell(Start-Process cmd -ArgumentList \"/k streamlit run app.py\" -WorkingDirectory \"d:\\\\world-cup-2026\")",
-      "PowerShell(pip install pymssql>=2.3.0 2>&1)"
+      "PowerShell(pip install pymssql>=2.3.0 2>&1)",
+      "Bash(pip show *)"
     ]
   }
 }
