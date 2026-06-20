@@ -140,34 +140,50 @@ def render(user: dict):
                 </div>
                 """, unsafe_allow_html=True)
             else:
-                ph, pa = pred
+                ph, pa, pw = pred if len(pred) == 3 else (*pred, None)
+                is_ko = m.get("stage", "group") != "group"
                 if is_done:
-                    pts = calc_points(ph, pa, m["score_home"], m["score_away"])
-                    if pts == 3:
-                        bg, border, pt_color, label = "#1a1500", "#C8A951", "#C8A951", "Exact ✓"
-                    elif pts == 1:
-                        bg, border, pt_color, label = "#0a1a10", "#2d9e6b", "#2d9e6b", "Winner ✓"
+                    if is_ko:
+                        from db import calc_points_knockout
+                        base, got_win = calc_points_knockout(
+                            ph, pa, pw,
+                            m["score_home"], m["score_away"], m.get("penalty_winner"),
+                            m["home"], m["away"],
+                        )
+                        if base == 2:
+                            bg, border, pt_color, label = "#1a1500", "#C8A951", "#C8A951", "Exact ✓"
+                        elif got_win:
+                            bg, border, pt_color, label = "#0a1a10", "#2d9e6b", "#2d9e6b", "Winner ✓"
+                        else:
+                            bg, border, pt_color, label = "#111", "#333", "#666", "Wrong ✗"
+                        pts_html   = f"<div style='font-size:1.1rem;font-weight:900;color:{pt_color};'>+{base}</div>"
+                        label_html = f"<div style='font-size:.62rem;color:{pt_color};font-weight:600;'>{label}</div>"
                     else:
-                        bg, border, pt_color, label = "#111",    "#333",    "#666",    "Wrong ✗"
-                    pts_html   = f"<div style='font-size:1.1rem;font-weight:900;color:{pt_color};'>+{pts}</div>"
-                    label_html = f"<div style='font-size:.62rem;color:{pt_color};font-weight:600;'>{label}</div>"
+                        pts = calc_points(ph, pa, m["score_home"], m["score_away"])
+                        if pts == 3:
+                            bg, border, pt_color, label = "#1a1500", "#C8A951", "#C8A951", "Exact ✓"
+                        elif pts == 1:
+                            bg, border, pt_color, label = "#0a1a10", "#2d9e6b", "#2d9e6b", "Winner ✓"
+                        else:
+                            bg, border, pt_color, label = "#111",    "#333",    "#666",    "Wrong ✗"
+                        pts_html   = f"<div style='font-size:1.1rem;font-weight:900;color:{pt_color};'>+{pts}</div>"
+                        label_html = f"<div style='font-size:.62rem;color:{pt_color};font-weight:600;'>{label}</div>"
                 else:
                     bg, border, pt_color = "#111", "#444", "#aaa"
                     pts_html   = ""
                     label_html = "<div style='font-size:.62rem;color:#555;'>Pending</div>"
+                pw_html = (f"<div style='font-size:.58rem;color:#888;'>→ {pw}</div>" if (is_ko and pw and ph == pa) else "")
 
                 me_border = f"2px solid #C8A951" if is_me else f"1px solid {border}"
-                col.markdown(f"""
-                <div style='background:{bg};border-radius:8px;padding:.5rem .6rem;
-                            border:{me_border};text-align:center;margin-bottom:.5rem;'>
-                    <div style='font-size:.68rem;font-weight:600;
-                                color:{"#C8A951" if is_me else "#aaa"};'>{short}</div>
-                    <div style='font-size:1.05rem;font-weight:700;color:#fff;margin:.2rem 0;'>
-                        {ph} – {pa}
-                    </div>
-                    {label_html}
-                    {pts_html}
-                </div>
-                """, unsafe_allow_html=True)
+                col.markdown(
+                    f"<div style='background:{bg};border-radius:8px;padding:.5rem .6rem;"
+                    f"border:{me_border};text-align:center;margin-bottom:.5rem;'>"
+                    f"<div style='font-size:.68rem;font-weight:600;"
+                    f"color:{'#C8A951' if is_me else '#aaa'};'>{short}</div>"
+                    f"<div style='font-size:1.05rem;font-weight:700;color:#fff;margin:.2rem 0;'>{ph} – {pa}</div>"
+                    f"{pw_html}{label_html}{pts_html}"
+                    f"</div>",
+                    unsafe_allow_html=True,
+                )
 
         st.markdown("<div style='margin-bottom:.8rem'></div>", unsafe_allow_html=True)
