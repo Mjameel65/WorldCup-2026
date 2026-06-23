@@ -21,7 +21,9 @@
       "PowerShell(pip install pymssql>=2.3.0 2>&1)",
       "Bash(pip show *)",
       "Bash(python -c \"import ast; ast.parse\\(open\\('app.py', encoding='utf-8'\\).read\\(\\)\\)\")",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git -C \"d:\\\\world-cup-2026\" diff --name-only HEAD)",
+      "WebFetch(domain:www.fifa.com)"
     ]
   }
 }
