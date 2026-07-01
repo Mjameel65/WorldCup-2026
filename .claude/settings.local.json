@@ -23,7 +23,14 @@
       "Bash(python -c \"import ast; ast.parse\\(open\\('app.py', encoding='utf-8'\\).read\\(\\)\\)\")",
       "WebSearch",
       "Bash(git -C \"d:\\\\world-cup-2026\" diff --name-only HEAD)",
-      "WebFetch(domain:www.fifa.com)"
+      "WebFetch(domain:www.fifa.com)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" status --short)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" log --oneline -5)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" show --stat 903812a)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" show --stat d23412a)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" show --stat 345fd87)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" show --stat 0f23efb)",
+      "Bash(git -C \"d:\\\\world-cup-2026\" show --stat 6652b88)"
     ]
   }
 }
